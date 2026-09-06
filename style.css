@@ -1,0 +1,184 @@
+/* =========================================================
+   Expense Tracker App — style.css (Dark Dongker Edition)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --sato-1: #c0e6fd;
+  --sato-2: #80aad3;
+  --sato-3: #5b86b6;
+  --sato-4: #3f6593;
+  --sato-5: #1b3554;
+  --sato-6: #000f22;
+
+  --text-dark: var(--sato-6);
+  --text-muted: var(--sato-2);
+
+  --color-income: #34D399; 
+  --color-expense: #FB7185; 
+
+  --font-family: 'Outfit', sans-serif;
+  --card-radius: 20px;
+  --card-padding: 24px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-image: url('bg-wave.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #F8FAFC;
+
+  min-height: 100vh;
+  color: var(--text-dark);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.tracker-app { max-width: 1200px; width: 100%; display: flex; flex-direction: column; gap: 1.75rem; }
+.tracker-app main { display: flex; flex-direction: column; gap: 1.75rem; }
+
+/* =========================================================
+   TEMA KARTU: FULL BIRU DONGKER
+   ========================================================= */
+.tracker-summary__balance,
+.tracker-summary__stat,
+.tracker-form-section__card,
+.tracker-search,
+.tracker-transaction-list {
+  background: linear-gradient(135deg, var(--sato-6) 0%, var(--sato-5) 100%);
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  box-shadow: 0 12px 30px rgba(0, 15, 34, 0.4); 
+  color: #FFFFFF; 
+}
+
+.tracker-header { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; }
+.tracker-header__title { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; color: var(--sato-6); }
+.tracker-header__user { display: flex; align-items: center; gap: 0.85rem; }
+.tracker-header__user-info { display: flex; flex-direction: column; align-items: flex-end; }
+.tracker-header__greeting { font-size: 0.95rem; font-weight: 500; color: var(--sato-6); }
+.tracker-header__date { font-size: 0.8rem; color: var(--sato-4); font-weight: 600; }
+.tracker-header__avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background-color: var(--sato-5); color: #fff;
+  border: 2px solid var(--sato-1);
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+
+.tracker-summary { display: grid; grid-template-columns: 2fr 1.25fr 1.25fr; gap: 1.5rem; }
+.tracker-summary__label {
+  font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+  color: var(--sato-2); letter-spacing: 0.05em; margin-bottom: 0.75rem;
+}
+.tracker-summary__balance { border: 1px solid rgba(255,255,255,0.25); }
+.tracker-summary__balance .tracker-summary__label { color: var(--sato-1); }
+.tracker-summary__balance-amount { font-size: 3.5rem; font-weight: 800; letter-spacing: -0.05em; margin-top: auto; }
+.tracker-summary__stat-amount { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.04em; margin-top: auto; }
+.tracker-summary__stat-amount--income { color: var(--color-income); }
+.tracker-summary__stat-amount--expense { color: var(--color-expense); }
+
+.tracker-form-section__heading {
+  font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+  color: var(--sato-1); letter-spacing: 0.05em; margin-bottom: 1rem;
+}
+.tracker-form { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 1rem; align-items: end; }
+.tracker-form__field { display: flex; flex-direction: column; gap: 0.4rem; }
+.tracker-form__label { font-size: 0.85rem; font-weight: 500; color: var(--sato-2); }
+
+.tracker-form__input {
+  width: 100%; padding: 0.85rem 1rem; border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.2); 
+  font-family: inherit; font-size: 0.95rem; outline: none; transition: all 0.2s;
+  color: #FFFFFF;
+}
+.tracker-form__input::placeholder { color: rgba(255, 255, 255, 0.4); }
+.tracker-form__input:focus { border-color: var(--sato-2); background: rgba(0, 0, 0, 0.4); }
+.tracker-form__input option { background: var(--sato-5); color: #fff; }
+
+.tracker-form__submit {
+  background: var(--sato-1); color: var(--sato-6); border: none;
+  padding: 0.85rem 1.5rem; height: 44px; border-radius: 12px;
+  font-family: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+.tracker-form__submit:hover { background: #FFFFFF; }
+.tracker-form__submit:active { transform: scale(0.98); }
+
+.tracker-history { display: flex; flex-direction: column; gap: 1.5rem; }
+.tracker-search { padding: 1.25rem 1.5rem; }
+.tracker-search__form { display: flex; gap: 1rem; }
+.tracker-search__form .tracker-form__input { flex: 1; }
+.tracker-search__submit {
+  background: var(--sato-2); color: var(--sato-6); border: none;
+  padding: 0 1.5rem; border-radius: 12px; font-family: inherit; font-weight: 700; cursor: pointer;
+  transition: background-color 0.2s;
+}
+.tracker-search__submit:hover { background: var(--sato-1); }
+
+.tracker-history__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.tracker-transaction-list__header { display: flex; justify-content: space-between; margin-bottom: 0.75rem; }
+.tracker-transaction-list__title {
+  font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+  color: var(--sato-1); letter-spacing: 0.05em;
+}
+.tracker-transaction-list__container { display: flex; flex-direction: column; gap: 0.75rem; }
+
+/* =========================================================
+   KARTU TRANSAKSI (Digenerate otomatis oleh main.js)
+   ========================================================= */
+.transaction-card {
+  display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+}
+.transaction-card:last-child { border-bottom: none; }
+.transaction-card h3 { font-weight: 600; font-size: 1.1rem; color: #FFFFFF; margin-bottom: 0.2rem;}
+.transaction-card p { font-size: 0.85rem; color: var(--sato-2); margin: 0; }
+.transaction-card p[data-testid="transactionItemAmount"] { font-weight: 700; font-size: 1.1rem; color: #FFFFFF; }
+
+.transaction-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.transaction-actions button {
+  background: rgba(255, 255, 255, 0.08); color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 0.8rem; font-size: 0.8rem; font-weight: 500;
+  border-radius: 6px; cursor: pointer; font-family: inherit; transition: all 0.2s;
+}
+.transaction-actions button:hover { background: var(--sato-2); color: var(--sato-6); border-color: var(--sato-2); }
+
+.tracker-footer { text-align: center; padding: 1.5rem 0 0.5rem 0; color: var(--sato-6); font-weight: 600; font-size: 0.85rem; margin-top: 1rem; }
+
+@media (max-width: 1024px) {
+  .tracker-summary { grid-template-columns: 1fr 1fr; }
+  .tracker-summary__balance { grid-column: span 2; }
+  .tracker-form { grid-template-columns: 1fr 1fr; }
+  .tracker-form__field:nth-child(1), .tracker-form__submit { grid-column: span 2; }
+  .tracker-history__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  body { padding: 0.75rem; }
+  .tracker-app, .tracker-app main { gap: 1rem; }
+  .tracker-summary { grid-template-columns: 1fr; gap: 1rem; }
+  .tracker-summary__balance, .tracker-summary__stat { grid-column: span 1; padding: 1.25rem; }
+  .tracker-summary__balance-amount { font-size: 2.25rem; word-break: break-all; }
+  .tracker-summary__stat-amount { font-size: 1.75rem; }
+  .tracker-form-section__card { padding: 1.25rem; }
+  .tracker-form { display: flex; flex-direction: column; align-items: stretch; gap: 1.25rem; }
+  .tracker-form__submit { width: 100%; margin-top: 0.5rem; }
+}
